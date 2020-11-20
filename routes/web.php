@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PhotographerController;
+use App\Http\Controllers\AlbumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('api/photographers', [PhotographerController::class, 'index']);
+
+Route::get('api/photographers/{photographerID}', [PhotographerController::class, 'show']);
+
+Route::get('api/photographers/{photographerID}/albums', [PhotographerController::class, 'getAlbums']);
+
+Route::get('api/albums/{albumID}', [AlbumController::class, 'getAlbum']);
