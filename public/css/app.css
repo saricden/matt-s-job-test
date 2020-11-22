@@ -10943,22 +10943,7 @@ header.primary {
 }
 
 header.primary .profile-picture {
-  width: 100%;
   max-width: 25rem;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-header.primary .profile-picture div {
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 100%;
 }
 
 header.primary .bio,
@@ -10987,6 +10972,25 @@ header.primary .contact div a {
 
 header.primary .contact div:last-of-type {
   margin-bottom: 0;
+}
+
+.profile-picture {
+  width: 100%;
+  max-width: 15rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-picture div {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 100%;
 }
 
 .gallery {
@@ -11046,6 +11050,62 @@ header.primary .contact div:last-of-type {
 
 .gallery .photo-card footer time {
   color: #AAA;
+}
+
+.profile-link {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #FFF;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-decoration: none !important;
+}
+
+.profile-link header {
+  font-size: 3rem;
+}
+
+.profile-link p {
+  color: #000;
+  padding-right: 2rem;
+}
+
+.profile-link svg {
+  font-size: 4rem;
+  margin-left: auto;
+}
+
+.profile-link:last-of-type {
+  margin-bottom: 0;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.loader div svg {
+  margin-right: 2rem;
 }
 
 h1 {

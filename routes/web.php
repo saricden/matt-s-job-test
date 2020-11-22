@@ -15,9 +15,7 @@ use App\Http\Controllers\AlbumController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('{all}', 'index')->where('all', '^(?!api).*$');
 
 Route::get('api/photographers', [PhotographerController::class, 'index']);
 

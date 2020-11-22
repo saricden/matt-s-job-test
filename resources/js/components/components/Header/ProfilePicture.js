@@ -4,7 +4,7 @@ function ProfilePicture({ src }) {
   return (
     <div className="profile-picture">
       <div style={{
-        backgroundImage: `url(${src})`
+        backgroundImage: `url(/${src})`
       }} />
     </div>
   );

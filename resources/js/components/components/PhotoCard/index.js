@@ -5,7 +5,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 function PhotoCard({url, name, date, description, featured}) {
   return (
     <div className="photo-card">
-      <header style={{backgroundImage: `url(${url})`}}>
+      <header style={{backgroundImage: `url(/${url})`}}>
         {name}
       </header>
       <p>{description}</p>
