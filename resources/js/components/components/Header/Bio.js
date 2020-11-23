@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Component for the Bio markup
 function Bio({name, bio}) {
   return (
     <div className="bio">

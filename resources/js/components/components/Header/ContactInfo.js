@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Component for the contact info markup
 function ContactInfo({phone, email}) {
   return (
     <div className="contact">

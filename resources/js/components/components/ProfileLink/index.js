@@ -4,6 +4,7 @@ import ProfilePicture from '../Header/ProfilePicture';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
+// A component which renders a stylized link to the photographer's profile
 function ProfileLink({name, bio, id, profilePicture}) {
   return (
     <Link

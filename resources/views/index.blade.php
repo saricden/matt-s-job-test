@@ -23,6 +23,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
   </head>
   <body class="antialiased">
+    <!-- Add a root DOM element for the SPA app, and load the app's JS -->
     <div id="app"></div>
     <script src="{{asset('js/app.js')}}"></script>
   </body>

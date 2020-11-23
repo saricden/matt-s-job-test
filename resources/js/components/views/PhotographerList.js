@@ -3,19 +3,26 @@ import ProfileLink from '../components/ProfileLink';
 import Loader from '../components/Loader';
 import Navbar from '../components/Navbar';
 
+// The home view of the app, lists the photographers in the DB
 class PhotographerList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Initialize the photographers to an empty array
       photographers: [],
+      // And set to loading
       loading: true
     }
   }
 
+  // Async componentDidMount, so we can make synchronous API calls (await)
   async componentDidMount() {
+    // Fetch the response from the photographers endpoint
     const response = await fetch('/api/photographers');
+    // And await the JSON
     const photographers = await response.json();
 
+    // Update the state
     this.setState({
       photographers,
       loading: false
@@ -23,8 +30,10 @@ class PhotographerList extends Component {
   }
 
   render() {
+    // Extract loading bool and photographers array from the state
     const {loading, photographers} = this.state;
 
+    // Show the loader when loading, or the view when loaded
     return loading
       ? <Loader msg="Loading photographers..." />
       : (
@@ -35,6 +44,7 @@ class PhotographerList extends Component {
             <h1>Photographers</h1>
           </header>
 
+          {/* If there are photographers in the DB, map them to ProfileLink elements */}
           <div>
             {
               photographers.length === 0

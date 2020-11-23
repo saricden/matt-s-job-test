@@ -15,8 +15,10 @@ use App\Http\Controllers\AlbumController;
 |
 */
 
+// Direct all requests to any domain OTHER THAN those starting with /api to the index view (SPA)
 Route::view('{all}', 'index')->where('all', '^(?!api).*$');
 
+// Direct the api calls to their respective controller functions
 Route::get('api/photographers', [PhotographerController::class, 'index']);
 
 Route::get('api/photographers/{photographerID}', [PhotographerController::class, 'show']);

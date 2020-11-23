@@ -13,6 +13,7 @@ class CreatePhotographerTable extends Migration
      */
     public function up()
     {
+        // Create a table for photographers
         Schema::create('photographers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -31,6 +32,7 @@ class CreatePhotographerTable extends Migration
      */
     public function down()
     {
+        // Drop the table
         Schema::dropIfExists('photographers');
     }
 }

@@ -8,6 +8,7 @@ import PhotographerList from './views/PhotographerList';
 import AlbumList from './views/AlbumList';
 import Album from './views/Album';
 
+// Return our router, so that we can map paths to views
 function App() {
   return (
     <Router>
@@ -32,6 +33,7 @@ function App() {
 
 export default App;
 
+// Bind the <App /> (root) component to our DOM
 if (document.getElementById('app')) {
   ReactDOM.render(<App />, document.getElementById('app'));
 }

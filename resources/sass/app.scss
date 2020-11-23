@@ -7,6 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Default styling for light theme background animation
 body {
   animation-name: BgFadeLight;
   animation-duration: 10s;
@@ -16,6 +17,7 @@ body {
   color: $bodytext-light;
 }
 
+// Dark mode background animation
 body.dark {
   animation-name: BgFadeDark;
   color: $bodytext-dark;
@@ -25,6 +27,7 @@ body.noscroll {
   overflow-y: hidden;
 }
 
+// Keyframes for both background animations
 @keyframes BgFadeLight {
   0% {
     background-color: #96b0d1;
@@ -36,7 +39,6 @@ body.noscroll {
     background-color: #bb96d1;
   }
 }
-
 @keyframes BgFadeDark {
   0% {
     background-color: #101b29;
@@ -49,10 +51,13 @@ body.noscroll {
   }
 }
 
+// Initialize the font-size of the root element to 10px
+// All other sizing will be based of this via rem units
 :root {
   font-size: 10px;
 }
 
+// Main view container
 main {
   width: 100%;
   max-width: 120rem;
@@ -62,6 +67,7 @@ main {
   margin: 0 auto;
 }
 
+// Photographer profile header
 header.primary {
   width: 100%;
   display: flex;
@@ -73,6 +79,7 @@ header.primary {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 
+  // Break to mobile layout under 950px viewport width
   @media (max-width: 950px) {
     flex-direction: column;
 
@@ -117,10 +124,12 @@ header.primary {
   }
 }
 
+// Adjust for dark theme
 .dark header.primary {
   background-color: $panelbg-dark;
 }
 
+// Secondary, textual header
 header.textual {
   h1 {
     margin-bottom: 2rem;
@@ -133,31 +142,35 @@ header.textual {
   }
 }
 
+// Profile picture object
 .profile-picture {
+  width: 100%;
+  max-width: 15rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
     width: 100%;
-    max-width: 15rem;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    div {
-      width: 100%;
-      height: 0;
-      padding-bottom: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      border-radius: 100%;
-    }
+    height: 0;
+    // Use padding-bottom: 100% to trick it into displaying a responsive fixed aspect ratio square
+    padding-bottom: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;
   }
+}
 
+// Gallery container
 .gallery {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
 
+  // Gallery photo card object
   .photo-card {
     display: flex;
     flex-direction: column;
@@ -168,6 +181,7 @@ header.textual {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 
     header {
       font-size: $font-size-subheading;
@@ -210,10 +224,12 @@ header.textual {
   }
 }
 
+// Adjust for dark theme
 .dark .gallery .photo-card {
   background-color: $panelbg-dark;
 }
 
+// Photographer's profile link object
 .profile-link {
   width: 100%;
   display: flex;
@@ -240,18 +256,21 @@ header.textual {
     font-size: $font-size-heading;
     margin-left: auto;
 
+    // Switch margin to top on mobile breakpoint
     @media(max-width: 950px) {
       margin-left: 0;
       margin-top: 2rem;
     }
   }
 
+  // Use column direction on mobile
   @media (max-width: 950px) {
     flex-direction: column;
     text-align: center;
   }
 }
 
+// Adjust for dark theme
 .dark .profile-link {
   background-color: $panelbg-dark;
 
@@ -260,6 +279,7 @@ header.textual {
   }
 }
 
+// Grid of square album links
 .album-grid {
   display: flex;
   flex-direction: row;
@@ -267,6 +287,7 @@ header.textual {
   justify-content: flex-start;
   flex-wrap: wrap;
 
+  // Individual album link
   .album-link {
     width: calc(33% - 2rem);
     background-color: $panelbg-light;
@@ -277,12 +298,15 @@ header.textual {
     min-width: 30rem;
 
     div {
+      // Position the outer square as relative, so we can absolutely position elements to it vvvv
       position: relative;
       width: 100%;
       height: 0;
+      // Use the same square aspect ratio trick here
       padding-bottom: 100%;
 
       span {
+        // This is the element we want to absolutely position to the parent ^^^^
         position: absolute;
         top: 0;
         left: 0;
@@ -295,15 +319,18 @@ header.textual {
     }
   }
 
+  // Space the elements around on mobile
   @media (max-width: 950px) {
     justify-content: space-around;
   }
 }
 
+// Adjust for dark theme
 .dark .album-grid .album-link {
   background-color: $panelbg-dark;
 }
 
+// Top navigation element
 nav {
   margin-bottom: 2rem;
   padding: 0;
@@ -316,6 +343,7 @@ nav {
   align-items: center;
   justify-content: space-between;
 
+  // Breadcrumb link list
   ul {
     list-style: none;
     padding: 0;
@@ -335,6 +363,7 @@ nav {
     }
   }
 
+  // Custom CSS for the toggle/label
   label {
     display: flex;
     flex-direction: row;
@@ -344,6 +373,7 @@ nav {
     span {
       margin-right: 1rem;
 
+      // Hide the label on mobile
       @media (max-width: 950px) {
         display: none;
       }
@@ -351,28 +381,32 @@ nav {
   }
 }
 
+// Adjust for dark theme
 .dark nav {
   background-color: $panelbg-dark;
 }
 
+// Position the icons correctly within the toggle
 .react-switch-bg > div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+// Adjust the colours of the light and dark theme icons
 .react-switch-bg > div:first-of-type {
   color: #000;
 }
-
 .react-switch-bg > div:last-of-type {
   color: #FFF;
 }
 
+// Remove margin on the final profile link
 .profile-link:last-of-type {
   margin-bottom: 0;
 }
 
+// Styling for the loader component
 .loader {
   position: fixed;
   top: 0;
@@ -397,10 +431,12 @@ nav {
   }
 }
 
+// Dark theme adjustments for the loader
 .dark .loader {
   color: $bodytext-dark;
 }
 
+// Basic element styling
 h1 {
   font-size: $font-size-heading;
   font-weight: $font-weight-bold;

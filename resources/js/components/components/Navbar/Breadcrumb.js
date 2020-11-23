@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight, faHome} from '@fortawesome/free-solid-svg-icons';
 
+// A component that takes in an optional photographer object, and an optional albumID, then renders a breadcrumb link trail
 function Breadcrumb({photographer, albumID}) {
   return (
     <ul>

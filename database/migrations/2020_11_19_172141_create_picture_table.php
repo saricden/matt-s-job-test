@@ -13,6 +13,7 @@ class CreatePictureTable extends Migration
      */
     public function up()
     {
+        // Create a table for the pictures
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('album_id');
@@ -32,6 +33,7 @@ class CreatePictureTable extends Migration
      */
     public function down()
     {
+        // Drop the table
         Schema::dropIfExists('pictures');
     }
 }

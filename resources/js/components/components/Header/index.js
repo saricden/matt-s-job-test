@@ -5,6 +5,7 @@ import ProfilePicture from './ProfilePicture';
 import Bio from './Bio';
 import ContactInfo from './ContactInfo';
 
+// Reusable profile header component, displays the profile picture, bio, and contact info
 class Header extends Component {
   constructor(props) {
     super(props);

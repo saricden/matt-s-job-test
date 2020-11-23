@@ -13,6 +13,7 @@ class CreateAlbumTable extends Migration
      */
     public function up()
     {
+        // Create a table for albums
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner_id');
@@ -27,6 +28,7 @@ class CreateAlbumTable extends Migration
      */
     public function down()
     {
+        // Drop the table
         Schema::dropIfExists('albums');
     }
 }
