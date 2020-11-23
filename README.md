@@ -5,9 +5,11 @@ Hello and welcome to my job test! Thank you so much for this oppurtunity, I've d
 
 ## Installation
 
-1) Clone the repository:
+1) Clone the repository and `cd` into it:
 
 `git clone git@github.com:saricden/matt-s-job-test.git`
+
+`cd matt-s-job-test`
 
 2) Install the Composer and NPM dependencies:
 
