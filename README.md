@@ -1,61 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+#Kirk's Job Test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Hello and welcome to my job test! Thank you so much for this oppurtunity, I've done my absolute best to get this done well but in a timely fashion.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1) Clone the repository:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+`git clone git@github.com:saricden/matt-s-job-test.git`
 
-## Learning Laravel
+2) Install the Composer and NPM dependencies:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+`composer install`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+`npm install`
 
-## Laravel Sponsors
+3) Build the JavaScript frontend:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+`npm run prod`
 
-### Premium Partners
+4) Move the `.env.example` file to `.env`:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+`mv .env.example .env`
 
-## Contributing
+5) Create a MySQL database named `jobtest` on localhost, and make a username / password combo with full privileges, then fill in the details in `.env`:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+...
+DB_DATABASE=jobtest
+DB_USERNAME=yourusename
+DB_PASSWORD=yourpassword
+...
+```
 
-## Code of Conduct
+6) Migrate the database structure:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+`php artisan migrate`
 
-## Security Vulnerabilities
+7) Seed the database:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+`php artisan db:seed`
 
-## License
+8) Generate a key:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+`php artisan key:generate`
+
+9) Run the server:
+
+`php artisan serve`
+
+
+## Features
+
+I've implemented the required features, along with a few extras! There is a minimalist API for reading data from the database, a frontend to display the gallery, along with:
+
+- A responsive UI such that the app could be used on a tablet or smartphone.
+- A couple extra views to display photographers and the albums posted under their profiles.
+- A breadcrumb navbar to go back to previous views.
+- A dark mode toggle (which saves to `localStorage`).
+
+
+## Details
+
+### My Process
+
+My development process entailed first setting up a Laravel development environment, then implementing React for the UI. I built out the frontend of the gallery (initially connecting it simply to the JSON file provided). After that was in place I moved on to creating migrations to define the database structure and a seeder to import the data from the JSON file into the newly structured database. At this point I began to write out code for the API (testing it via Postman), and shortly after this I refactored the frontend to consume the API instead of the JSON file.
+
+### Tools I Used
+
+I used the following tools:
+
+- Laravel (of course)
+- React (for the frontend SPA)
+- react-router-dom for frontend routing
+- react-switch for a stylistic switch element
+- react-image-lightbox for a zoom-enabled image modal that worked on mobile and desktop
+- FontAwesome for SVG icons
+
+I consider these tools important for my development mainly because they save time and prevent me from "re-inventing the wheel." While some are more important than others (it would have been fairly trivial to introduce my own switch element for example), the time saved by leveraging existing code enabled me to focus on the logic unique to this application as opposed to getting bogged down in boilerplate.
+
+### What Was Hard
+
+The part I considered the most tricky was probably getting the hang of MVC again (it's been a hot minute since I've setup my own backend). While I enjoy serverside coding, in my own projects I usually leverage BaaS such as Firebase and focus my attention on the UI/UX code. That being said I loved the challenge!
+
+I will note that I'm not sure if I placed some of my API functions in the correct place. I feel as though some of the querying code which I placed in my controllers might have been better suited in the models. Curious to know what you think!
+
+### What Was Easy
+
+The frontend. While parts are always a challenge, in general the frontend is where I shine. I love developing interactive, visual code.
+
+
+## Takeaway
+
+This was an excellent test, which I think enabled me to show off both front and backend skills. While I did find the frontend easier, I would like to be clear that I am still applying for the full stack position. Not only do I want to brush up on my rusty backend skills, I want to become a fully balanced web developer.
+
+All the best, Kirk.
