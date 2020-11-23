@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import ProfileLink from '../components/ProfileLink/';
-import Loader from '../components/Loader/';
+import ProfileLink from '../components/ProfileLink';
+import Loader from '../components/Loader';
+import Navbar from '../components/Navbar';
 
 class PhotographerList extends Component {
   constructor(props) {
@@ -28,9 +29,12 @@ class PhotographerList extends Component {
       ? <Loader msg="Loading photographers..." />
       : (
         <main>
-          <header>
+          <Navbar photographer={null} album={null} />
+
+          <header className="textual">
             <h1>Photographers</h1>
           </header>
+
           <div>
             {
               photographers.length === 0

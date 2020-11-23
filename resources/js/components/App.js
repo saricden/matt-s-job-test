@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import 'react-image-lightbox/style.css';
 
 // Views
-import Home from './views/Home';
 import PhotographerList from './views/PhotographerList';
 import AlbumList from './views/AlbumList';
 import Album from './views/Album';

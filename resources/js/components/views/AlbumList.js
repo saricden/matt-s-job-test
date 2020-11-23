@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import Loader from '../components/Loader/';
+import Loader from '../components/Loader';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
+import AlbumLink from '../components/AlbumLink';
 
 class AlbumList extends Component {
   constructor(props) {
@@ -44,16 +47,25 @@ class AlbumList extends Component {
       ? <Loader msg="Loading albums..." />
       : (
           <main>
-            <h1>{photographer.name}'s Albums</h1>
-            {
-              albums.length === 0
-                ? <p>Nothing to see here!</p>
-                : albums.map((album, i) => (
-                    <Link to={`/${photographer.id}/${album.id}`} key={`alink${i}`}>
-                      Album #{(i + 1)}
-                    </Link>
-                  ))
-            }
+            <Navbar photographer={photographer} album={null} />
+
+            <Header photographer={photographer} />
+            
+            <header className="textual">
+              <h2>Albums</h2>
+            </header>
+
+            <div className="album-grid">
+              {
+                albums.length === 0
+                  ? <p>Nothing to see here!</p>
+                  : albums.map((album, i) => (
+                      <AlbumLink to={`/${photographer.id}/${album.id}`} key={`alink${i}`}>
+                        Album #{album.id}
+                      </AlbumLink>
+                    ))
+              }
+            </div>
           </main>
         );
   }

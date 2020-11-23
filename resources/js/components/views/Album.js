@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import Header from '../components/Header/';
-import PhotoCard from '../components/PhotoCard/';
-import Gallery from '../components/Gallery/';
-import Loader from '../components/Loader/';
+import Header from '../components/Header';
+import PhotoCard from '../components/PhotoCard';
+import Gallery from '../components/Gallery';
+import Loader from '../components/Loader';
+import Navbar from '../components/Navbar';
+import Lightbox from 'react-image-lightbox';
 
 class Album extends Component {
   constructor(props) {
@@ -11,8 +13,12 @@ class Album extends Component {
     this.state = {
       photographer: null,
       pictures: null,
-      loading: true
+      loading: true,
+      modalOpen: false,
+      pictureIndex: 0
     }
+
+    this.openModal = this.openModal.bind(this);
   }
 
   async componentDidMount() {
@@ -40,14 +46,28 @@ class Album extends Component {
     })
   }
 
+  openModal(pictureIndex) {
+    this.setState({
+      modalOpen: true,
+      pictureIndex
+    });
+  }
+
   render() {
-    const {loading, photographer, pictures} = this.state;
+    const {loading, photographer, pictures, modalOpen, pictureIndex} = this.state;
+    const {albumID} = this.props.match.params;
 
     return loading
       ? <Loader msg="Loading pictures..." />
       : (
           <main>
+            <Navbar photographer={photographer} albumID={albumID} />
+
             <Header photographer={photographer} />
+
+            <header className="textual">
+              <h2>Album #{albumID}</h2>
+            </header>
 
             <Gallery>
               {
@@ -59,12 +79,26 @@ class Album extends Component {
                         name={photo.title}
                         date={photo.op_date}
                         description={photo.description}
-                        featured={photo.featured}  
+                        featured={photo.featured}
+                        onClick={() => this.openModal(i)}
                       />
                     ))
                   : <p>Nothing to see here!</p>
               }
             </Gallery>
+
+            {modalOpen && pictures && (
+              <Lightbox
+                mainSrc={`/${pictures[pictureIndex].img}`}
+                onCloseRequest={() => {
+                  this.setState({ modalOpen: false });
+                  document.body.classList.remove('noscroll');
+                }}
+                onAfterOpen={() => {
+                  document.body.classList.add('noscroll');
+                }}
+              />
+            )}
           </main>
         );
   }

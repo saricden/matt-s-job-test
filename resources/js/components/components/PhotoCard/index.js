@@ -2,10 +2,13 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-function PhotoCard({url, name, date, description, featured}) {
+function PhotoCard({url, name, date, description, featured, onClick}) {
   return (
-    <div className="photo-card">
-      <header style={{backgroundImage: `url(/${url})`}}>
+    <div className="photo-card" onClick={onClick}>
+      <header style={{backgroundImage: `
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75)),
+        url(/${url})
+      `}}>
         {name}
       </header>
       <p>{description}</p>

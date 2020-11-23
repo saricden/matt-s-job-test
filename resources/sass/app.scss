@@ -8,7 +8,45 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-color: #CCC;
+  animation-name: BgFadeLight;
+  animation-duration: 10s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  color: $bodytext-light;
+}
+
+body.dark {
+  animation-name: BgFadeDark;
+  color: $bodytext-dark;
+}
+
+body.noscroll {
+  overflow-y: hidden;
+}
+
+@keyframes BgFadeLight {
+  0% {
+    background-color: #96b0d1;
+  }
+  50% {
+    background-color: #b1d196;
+  }
+  100% {
+    background-color: #bb96d1;
+  }
+}
+
+@keyframes BgFadeDark {
+  0% {
+    background-color: #101b29;
+  }
+  50% {
+    background-color: #102912;
+  }
+  100% {
+    background-color: #291027;
+  }
 }
 
 :root {
@@ -19,6 +57,7 @@ main {
   width: 100%;
   max-width: 120rem;
   padding: 2rem;
+  padding-top: 0;
   box-sizing: border-box;
   margin: 0 auto;
 }
@@ -30,7 +69,7 @@ header.primary {
   align-items: center;
   justify-content: flex-start;
   padding: 2rem;
-  background-color: #FFF;
+  background-color: $panelbg-light;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 
@@ -78,6 +117,22 @@ header.primary {
   }
 }
 
+.dark header.primary {
+  background-color: $panelbg-dark;
+}
+
+header.textual {
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin: 2rem 0;
+    text-align: center;
+    font-size: $font-size-subheading;
+  }
+}
+
 .profile-picture {
     width: 100%;
     max-width: 15rem;
@@ -102,7 +157,6 @@ header.primary {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 1rem;
 
   .photo-card {
     display: flex;
@@ -110,7 +164,7 @@ header.primary {
     width: calc(33% - 2rem);
     min-width: 30rem;
     margin: 1rem;
-    background-color: #FFF;
+    background-color: $panelbg-light;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -156,12 +210,16 @@ header.primary {
   }
 }
 
+.dark .gallery .photo-card {
+  background-color: $panelbg-dark;
+}
+
 .profile-link {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #FFF;
+  background-color: $panelbg-light;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -174,14 +232,141 @@ header.primary {
   }
 
   p {
-    color: #000;
+    color: $bodytext-light;
     padding-right: 2rem;
   }
 
   svg {
     font-size: $font-size-heading;
     margin-left: auto;
+
+    @media(max-width: 950px) {
+      margin-left: 0;
+      margin-top: 2rem;
+    }
   }
+
+  @media (max-width: 950px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.dark .profile-link {
+  background-color: $panelbg-dark;
+
+  p {
+    color: $bodytext-dark;
+  }
+}
+
+.album-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  .album-link {
+    width: calc(33% - 2rem);
+    background-color: $panelbg-light;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    margin: 1rem;
+    min-width: 30rem;
+
+    div {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  @media (max-width: 950px) {
+    justify-content: space-around;
+  }
+}
+
+.dark .album-grid .album-link {
+  background-color: $panelbg-dark;
+}
+
+nav {
+  margin-bottom: 2rem;
+  padding: 0;
+  background-color: $panelbg-light;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+    margin: 0;
+
+    li {
+      padding: 1rem;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+
+    span {
+      margin-right: 1rem;
+
+      @media (max-width: 950px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.dark nav {
+  background-color: $panelbg-dark;
+}
+
+.react-switch-bg > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-switch-bg > div:first-of-type {
+  color: #000;
+}
+
+.react-switch-bg > div:last-of-type {
+  color: #FFF;
 }
 
 .profile-link:last-of-type {
@@ -194,8 +379,8 @@ header.primary {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #000;
+  background-color: transparent;
+  color: $bodytext-light;
   font-size: $font-size-subheading;
   display: flex;
   align-items: center;
@@ -210,6 +395,10 @@ header.primary {
       margin-right: 2rem;
     }
   }
+}
+
+.dark .loader {
+  color: $bodytext-dark;
 }
 
 h1 {
